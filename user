@@ -1,0 +1,128 @@
+
+package testpractice1;
+import java.util.Scanner;
+
+
+public class test
+{
+ 
+     public static void main(String[] args) 
+    {
+        //password program
+      {
+       
+          Scanner sc=new Scanner(System.in);
+          System.out.print("please enter your email id : ");
+          String id=sc.nextLine();  
+          System.out.print("please enter your name : ");
+          String name=sc.nextLine();
+        
+         boolean check=true;
+         System.out.print("please enter your phone number : ");
+         
+		 do
+		  {   
+           String num=sc.nextLine();
+           int j=0;
+           for(int i=0; i<num.length();i++)
+             {
+                 if(num.charAt(i)>='0' && num.charAt(i)<='9')
+                 j++;
+             }
+			if (j==10)
+			{
+				check=false;
+			}
+			else
+			{
+                 System.out.println("enter valid number ");
+			}
+        }  while(check); 
+      
+    System.out.println("Please enter your password : ");
+    System.out.println("NOTE :\n 1)Password must be of length 8 to 15 \n 2)It must contain one upper case and one lower case character \n 3)Must contain 1 digit \n 4)Must contain symbol \n 5)Must not contain any space ");
+   
+    String pwd;
+    boolean check2=true;
+		do
+		{ 
+			pwd=sc.nextLine();
+			int  upper=0,lower=0,digit=0, space=0,symbol=0;
+			if(pwd.length()>=8 && pwd.length()<=15)
+			{
+				for(int k=0; k<pwd.length();k++)
+				{
+         
+				if(pwd.charAt(k)>='A' && pwd.charAt(k)<='Z' )
+				upper=1;
+				if    (pwd.charAt(k)>='a' && pwd.charAt(k)<='z' )
+				lower=1;
+				if    (pwd.charAt(k)>='0' && pwd.charAt(k)<='9' )
+				digit=1;
+				if    (pwd.charAt(k)==' ')
+				space=1;
+				if (!Character.isDigit(pwd.charAt(k)) && !Character.isWhitespace(pwd.charAt(k)) && !Character.isLetter(pwd.charAt(k)) )
+				symbol=1;
+         
+				}
+       
+			}  
+			if(upper==1 &&lower==1 && digit==1 && space ==0 &&symbol==1)   
+            check2=false;
+			
+			if(check2==true)
+			System.out.println("enter valid password");
+    
+       }while(check2);
+        
+   
+        String conpwd;
+        boolean check3=true; 
+        System.out.print("confirm your  password : ");
+      
+		do
+		{ 
+		
+         conpwd=sc.nextLine();
+         if(pwd.equals(conpwd))
+         check3=false;
+         else 
+         System.out.print("password did not match \nEnter your password again : ");
+
+        }while(check3);
+       
+              System.out.println("congratulations !! you have registered successfully \nLogin to check your details");
+             
+			 
+			  int p;
+              for(p=0;p<3;p++)  
+              {
+				System.out.print("enter your registered email id or user name : ");
+				String logindet=sc.nextLine();
+				if(logindet.equals(id) || logindet.equals(name) )
+				{  
+					System.out.print("enter your password : ");
+					String loginpwd=sc.nextLine();
+            
+                  if(loginpwd.equals(pwd))
+					{
+                    System.out.println("Logging in to system....please wait ");
+                    break;
+					}
+					else 
+					System.out.println("Enter correct password");
+				}
+				else         
+                System.out.println("Enter correct email / user name");
+			
+					if(p>2)
+                    System.out.println("Sorry...You have exceeds the trial. You are blocked by system. ");			  
+
+		
+
+			  }
+	  }
+
+	}
+}    
+
